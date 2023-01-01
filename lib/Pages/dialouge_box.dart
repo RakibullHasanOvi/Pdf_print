@@ -35,47 +35,52 @@ class _DialougeBoxState extends State<DialougeBox> {
     final untilPrice = TextEditingController();
     final quenTity = TextEditingController();
 
-    return AlertDialog(
-      backgroundColor: Colors.lime[50],
-      content: SizedBox(
-        height: 350,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // Text('Add Productlist'),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: AlertDialog(
+        backgroundColor: Colors.lime[50],
+        content: SizedBox(
+          height: 350,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Text('Add Productlist'),
 
-            CreateForm(
-              name: 'Product Name',
-              icons: Icons.shopping_bag_sharp,
-              controller: productName,
-            ),
-            CreateForm(
-              name: 'Price',
-              icons: Icons.attach_money_sharp,
-              controller: untilPrice,
-            ),
-            CreateForm(
-              name: 'Quentity',
-              icons: Icons.control_point_outlined,
-              controller: quenTity,
-            ),
+              CreateForm(
+                name: 'Product Name',
+                icons: Icons.shopping_bag_sharp,
+                controller: productName,
+              ),
+              CreateForm(
+                name: 'Price',
+                icons: Icons.attach_money_sharp,
+                controller: untilPrice,
+              ),
+              CreateForm(
+                name: 'Quentity',
+                icons: Icons.control_point_outlined,
+                controller: quenTity,
+              ),
 
-            const SizedBox(
-              height: 10,
-            ),
-            MyButtons(
-                text: 'ADD',
-                onPressed: () {
-                  final pList = Plist(
-                    productName.text.toString(),
-                    untilPrice.text.toString(),
-                    quenTity.text.toString(),
-                  );
-                  widget.onSave(pList);
-                  Navigator.of(context).pop();
-                  print(pList);
-                }),
-          ],
+              const SizedBox(
+                height: 10,
+              ),
+              MyButtons(
+                  text: 'ADD',
+                  onPressed: () {
+                    final pList = Plist(
+                      productName.text.toString(),
+                      untilPrice.text.toString(),
+                      quenTity.text.toString(),
+                    );
+                    widget.onSave(pList);
+                    Navigator.of(context).pop();
+                    print(pList);
+                  }),
+            ],
+          ),
         ),
       ),
     );
